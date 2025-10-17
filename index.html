@@ -6,125 +6,389 @@
   <title>Emmanuel Nwosu — Full‑Stack Developer</title>
   <meta name="description" content="Emmanuel Chizaram Nwosu — Full‑stack web developer (React frontend, Django backend). Projects, skills and contact." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M24 3l-12 18-12-18z'/></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Base styles */
+    :root {
+      --primary: #2563eb;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--light);
+      background-color: var(--dark);
+      position: relative;
+    }
+    
+    /* Background image styles */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: transparent;
+      background-image: url('asserts/background.webp'); /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.1; /* Adjust opacity as needed */
+      z-index: -1;
+    }
+    
+    /* Content wrapper to ensure readability */
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Rest of your existing styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .site-header {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--light);
+      text-decoration: none;
+    }
+    
+    .nav a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .nav a:hover {
+      color: var(--primary);
+    }
+    
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 6rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero p {
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .hero-image {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .cta {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    
+    .cta:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    
+    section {
+      padding: 4rem 0;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .card {
+      background-color: rgba(30, 41, 59, 0.7);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card img {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    
+    .card h3 {
+      margin-bottom: 0.75rem;
+    }
+    
+    .card p {
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .muted {
+      color: var(--gray) !important;
+      font-size: 0.875rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      margin-right: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    
+    .btn:hover {
+      background-color: #1d4ed8;
+    }
+    
+    .btn.outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn.outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .skills ul {
+      list-style-type: none;
+    }
+    
+    .skills li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .skills li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    .site-footer {
+      background-color: rgba(15, 23, 42, 0.9);
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .site-footer small {
+      color: var(--gray);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 3rem 0;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .nav {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="content-wrapper">
     <div id="site-loader" class="site-loader" aria-hidden="true">
       <div class="spinner" role="status" aria-label="Loading"></div>
     </div>
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="#">Emmanuel Nwosu</a>
-      <nav class="nav">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero container" id="home">
-      <div>
-        <h1>Hi, I’m Emmanuel — I build production‑ready web apps with React and Django.</h1>
-        <p>I design responsive frontends with React and TypeScript, and build robust APIs and services with Django & Django REST Framework. I deploy containerized apps with Docker and automate CI/CD pipelines for reliable releases.</p>
-        <p><a class="cta" href="#projects">See my work</a> <a class="cta" href="#contact" style="background:transparent;border:1px solid rgba(255,255,255,0.08);margin-left:8px;">Hire me</a></p>
+    
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="#">Emmanuel Nwosu's Portfolio</a>
+        <nav class="nav">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
-      <img class="hero-image" src="assets/profile.webp" alt="Emmanuel Nwosu portrait">
-    </section>
+    </header>
 
-    <section id="projects" class="container projects">
-      <h2>Selected projects</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="assets/project-taskflow.webp" alt="Taskflow app screenshot" loading="lazy">
+    <main>
+      <section class="hero container" id="home">
+        <div>
+          <h1>Hi, I'm Emmanuel — I build production‑ready web apps with React and Django.</h1>
+          <p>I design responsive frontends with React and TypeScript, and build robust APIs and services with Django & Django REST Framework. I deploy containerized apps with Docker and automate CI/CD pipelines for reliable releases.</p>
+          <p><a class="cta" href="#projects">See my work</a> <a class="cta" href="#contact" style="background:transparent;border:1px solid rgba(255,255,255,0.08);margin-left:8px;">Hire me</a></p>
+        </div>
+      </section>
+
+      <section id="projects" class="container projects">
+        <h2>Selected projects</h2>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/project-taskflow.webp" alt="Taskflow app screenshot" loading="lazy">
             <h3>Hospital Management System</h3>
             <p>Comprehensive HMS with patient records, appointment scheduling, billing, and reporting. Built with React, Django REST Framework, and PostgreSQL.</p>
             <p class="muted">React · Django · DRF · PostgreSQL · Jest</p>
             <p><a href="#" class="btn">Live</a> <a href="#" class="btn outline">Source</a></p>
-        </article>
+          </article>
 
-        <article class="card">
-          <img src="assets/project-authapi.webp" alt="AuthAPI dashboard screenshot" loading="lazy">
-          <h3>API for billpro — Scalable Authentication Service</h3>
-          <p>Robust authentication API with JWT, OAuth2, password resets, and email verification. Built with Django REST Framework and PostgreSQL.</p>
-          <p class="muted">Django · DRF · PostgreSQL · Django Default Token · Pytest · Postman</p>
-          <p><a href="#" class="btn">Live</a> <a href="#" class="btn outline">Source</a></p>
-        </article>
-        
-    
+          <article class="card">
+            <img src="assets/project-authapi.webp" alt="AuthAPI dashboard screenshot" loading="lazy">
+            <h3>API for billpro — Scalable Authentication Service</h3>
+            <p>Robust authentication API with JWT, OAuth2, password resets, and email verification. Built with Django REST Framework and PostgreSQL.</p>
+            <p class="muted">Django · DRF · PostgreSQL · Django Default Token · Pytest · Postman</p>
+            <p><a href="#" class="btn">Live</a> <a href="#" class="btn outline">Source</a></p>
+          </article>
 
-        <article class="card">
-          <img src="assets/project-deploykit.webp" alt="CI/CD and infra diagram" loading="lazy">
-          <h3>DeployKit — CI/CD & Infrastructure Automation</h3>
-          <p>Reusable GitHub Actions workflows, Terraform for infra provisioning, and Dockerized services deployed to AWS ECS with automated canary releases.</p>
-          <p class="muted">Docker · Terraform · GitHub Actions · AWS </p>
-          <p><a href="#" class="btn">Case study</a></p>
-        </article>
-      </div>
-    </section>
-    <div class="grid">
-        <section id="skills" class="skills">
+          <article class="card">
+            <img src="assets/project-deploykit.webp" alt="CI/CD and infra diagram" loading="lazy">
+            <h3>DeployKit — CI/CD & Infrastructure Automation</h3>
+            <p>Reusable GitHub Actions workflows, Terraform for infra provisioning, and Dockerized services deployed to AWS ECS with automated canary releases.</p>
+            <p class="muted">Docker · Terraform · GitHub Actions · AWS </p>
+            <p><a href="#" class="btn">Case study</a></p>
+          </article>
+        </div>
+      </section>
+      
+      <section id="skills" class="container skills">
         <h2>Skills</h2>
         <ul>
-            <li><strong>Frontend:</strong> React, Next.js, TypeScript, Tailwind/CSS Modules, accessibility</li>
-            <li><strong>Backend:</strong> Django, Django REST Framework, Django Channels, Python</li>
-            <li><strong>Databases:</strong> PostgreSQL, Redis, Prisma / ORMs, migrations & indexing</li>
-            <li><strong>Testing & Quality:</strong> Jest, React Testing Library, Pytest, Playwright, linters</li>
-            <li><strong>DevOps:</strong> Docker, GitHub Actions, Terraform, AWS (ECS/ECR, RDS), container orchestration</li>
-            <li><strong>Other:</strong> REST & GraphQL, WebSockets, authentication & security, performance tuning</li>
+          <li><strong>Frontend:</strong> JavaScript, HTML5, CSS, React, Tailwind/CSS Modules, accessibility</li>
+          <li><strong>Backend:</strong> Django, Django REST Framework, Django Channels, Python</li>
+          <li><strong>Databases:</strong> PostgreSQL, Redis, Prisma / ORMs, migrations & indexing</li>
+          <li><strong>Testing & Quality:</strong> Jest, React Testing Library, Pytest, Playwright, linters</li>
+          <li><strong>DevOps:</strong> Docker, GitHub Actions, Terraform, AWS (ECS/ECR, RDS), container orchestration</li>
+          <li><strong>Other:</strong> REST & GraphQL, WebSockets, authentication & security, performance tuning</li>
         </ul>
-        </section>
-    </div>
-    <section id="about" class="container about">
-      <h2>About</h2>
-      <p>I build end‑to‑end web products: pixel‑accurate frontends, robust APIs, and scalable deployments. I enjoy collaborating with designers and cross‑functional teams, leading features from prototype to production, and improving developer experience through automation and tests.</p>
-      <p>Open to full‑time roles, freelance contracts, or technical architecture reviews.</p>
-    </section>
+      </section>
+      
+      <section id="about" class="container about">
+        <h2>About</h2>
+        <p>I build end‑to‑end web products: pixel‑accurate frontends, robust APIs, and scalable deployments. I enjoy collaborating with designers and cross‑functional teams, leading features from prototype to production, and improving developer experience through automation and tests.</p>
+        <p>Open to full‑time roles, freelance contracts, or technical architecture reviews.</p>
+      </section>
 
-    <section id="contact" class="container contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:nwosuemmanuel159@gmail.com">nwosuemmanuel159@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/nwoemma" target="_blank" rel="noopener">github.com/nwoemma</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/emmanuel-nwosu-a6369332a" target="_blank" rel="noopener">linkedin.com/in/your-profile</a></p>
-      <p><a href="assets/Emmanuel_Nwosu_Resume.pdf" class="btn">Download Resume</a></p>
-    </section>
+      <section id="contact" class="container contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:nwosuemmanuel159@gmail.com">nwosuemmanuel159@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/nwoemma" target="_blank" rel="noopener">Github Account</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/emmanuel-nwosu-a6369332a" target="_blank" rel="noopener">Linkedin profile</a></p>
+        <p><a href="assets/Emmanuel_Nwosu_Resume.pdf" class="btn">Download Resume</a></p>
+      </section>
 
-    <div class="grid_card">
-        <article class="card">
-          <a href="https://welding-frontend.vercel.app"></a>
-          <h3>Project One</h3>
-          <p>A welding web application built with React as a frontend framework and Django REST Framework as a backend.</p>
-          <p><a href="https://welding-frontend.vercel.app" class="btn">Live</a> 
-        </article>
-        <article class="card">
-          <img src="assets/project2.webp" alt="Project 2 screenshot" loading="lazy">
-          <h3>Project Two</h3>
-          <p>Short description of the project and tech used.</p>
-        </article>
+      <div class="container">
+        <div class="grid">
+          <article class="card">
+            <h3>Project One</h3>
+            <p>A welding web application built with React as a frontend framework and Django REST Framework as a backend.</p>
+            <p><a href="https://welding-frontend.vercel.app" class="btn">Live</a></p>
+          </article>
+          <article class="card">
+            <img src="assets/project2.webp" alt="Project 2 screenshot" loading="lazy">
+            <h3>Project Two</h3>
+            <p>Short description of the project and tech used.</p>
+          </article>
 
-        <!-- Postman collection card -->
-        <article class="card">
-          <img src="assets/postman.webp" alt="Postman collection" loading="lazy">
-          <h3>API Collection — Postman</h3>
-          <p>Import this Postman collection to explore the API endpoints (auth, users, tasks) used in my projects.</p>
-          <p class="muted">Django REST Framework · JWT · Postman</p>
-          <p>
-            <a href="assets/postman_collection.json" class="btn" download>Download Collection</a>
-            <a href="https://www.postman.com/import" class="btn outline" target="_blank" rel="noopener">Import to Postman</a>
-          </p>
-        </article>
+          <!-- Postman collection card -->
+          <article class="card">
+            <img src="assets/postman.webp" alt="Postman collection" loading="lazy">
+            <h3>API Collection — Postman</h3>
+            <p>Import this Postman collection to explore the API endpoints (auth, users, tasks) used in my projects.</p>
+            <p class="muted">Django REST Framework · JWT · Postman</p>
+            <p>
+              <a href="assets/postman_collection.json" class="btn" download>Download Collection</a>
+              <a href="https://www.postman.com/import" class="btn outline" target="_blank" rel="noopener">Import to Postman</a>
+            </p>
+          </article>
+        </div>
       </div>
-</div>
-  </main>
-      <footer class="site-footer">
-    <div class="container">
-      <small>© Emmanuel Chizaram Nwosu — React & Django</small>
-    </div>
-  </footer>
+    </main>
+    
+    <footer class="site-footer">
+      <div class="container">
+        <small>© Emmanuel Chizaram Nwosu — React & Django</small>
+      </div>
+    </footer>
+  </div>
 
-  <script src="main.js" defer></script>
+  <script>
+    // Simple script to handle the site loader
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('site-loader');
+      loader.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
