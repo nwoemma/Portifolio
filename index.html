@@ -1,37 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emmanuel Nwosu — Full‑Stack Developer</title>
-  <meta name="description" content="Emmanuel Chizaram Nwosu — Full‑stack web developer (React frontend, Django backend). Projects, skills and contact." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M24 3l-12 18-12-18z'/></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Emmanuel Chizaram Nwosu — Full‑stack web developer specializing in React frontend and Django backend development.">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Base styles */
     :root {
-      --primary: #2563eb;
+      --primary: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --secondary: #8b5cf6;
       --dark: #0f172a;
       --light: #f8fafc;
       --gray: #64748b;
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
     body {
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: var(--light);
-      background-color: var(--dark);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f1f5f9;
       position: relative;
+      overflow-x: hidden;
     }
     
-    /* Background image styles */
     body::before {
       content: '';
       position: fixed;
@@ -39,396 +40,934 @@
       left: 0;
       width: 100%;
       height: 100%;
-      color: transparent;
-      background-image: url('asserts/background.webp'); /* Replace with your image path */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.1; /* Adjust opacity as needed */
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
       z-index: -1;
     }
     
-    /* Content wrapper to ensure readability */
-    .content-wrapper {
-      position: relative;
-      z-index: 1;
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
-    /* Rest of your existing styles */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    
-    .site-header {
-      background-color: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
+    .section-title {
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--light);
-      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
     }
     
-    .nav a {
-      color: var(--light);
-      text-decoration: none;
-      margin-left: 1.5rem;
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+    }
+    
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    .skill-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin: 5px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    
+    .skill-badge:hover {
+      background: rgba(59, 130, 246, 0.3);
+      transform: scale(1.05);
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 1rem !important;
+      margin: 0 0.5rem;
       font-weight: 500;
     }
     
-    .nav a:hover {
-      color: var(--primary);
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
     }
     
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      padding: 6rem 0;
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 80%;
     }
     
-    .hero h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    
-    .hero p {
-      margin-bottom: 1.5rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    
-    .hero-image {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    .cta {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
+    .btn-primary-custom {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border: none;
+      padding: 12px 28px;
       font-weight: 600;
-      transition: all 0.2s ease;
+      border-radius: 8px;
+      transition: all 0.3s ease;
     }
     
-    .cta:hover {
-      background-color: #1d4ed8;
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+    }
+    
+    .btn-outline-custom {
+      background: transparent;
+      border: 2px solid #3b82f6;
+      color: #3b82f6;
+      padding: 10px 26px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-custom:hover {
+      background: #3b82f6;
+      color: white;
       transform: translateY(-2px);
     }
     
-    section {
-      padding: 4rem 0;
-    }
-    
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+    .hero-image-container {
       position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
     
-    h2::after {
+    .hero-image-container::before {
       content: '';
       position: absolute;
-      bottom: -8px;
+      top: 0;
       left: 0;
-      width: 50px;
-      height: 3px;
-      background-color: var(--primary);
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+      z-index: 1;
     }
     
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+    .timeline {
+      position: relative;
+      padding-left: 30px;
     }
     
-    .card {
-      background-color: rgba(30, 41, 59, 0.7);
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
     }
     
-    .card:hover {
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 20px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #3b82f6;
+    }
+    
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 12px;
+      margin-bottom: 15px;
+      color: #3b82f6;
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-icon:hover {
+      background: #3b82f6;
+      color: white;
       transform: translateY(-5px);
     }
     
-    .card img {
+    .project-image {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
       width: 100%;
-      border-radius: 4px;
-      margin-bottom: 1rem;
     }
     
-    .card h3 {
-      margin-bottom: 0.75rem;
+    /* Animation for scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
     }
     
-    .card p {
-      margin-bottom: 1rem;
-      color: rgba(255, 255, 255, 0.8);
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
     
-    .muted {
-      color: var(--gray) !important;
-      font-size: 0.875rem;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 0.875rem;
-      margin-right: 0.5rem;
-      transition: all 0.2s ease;
-    }
-    
-    .btn:hover {
-      background-color: #1d4ed8;
-    }
-    
-    .btn.outline {
-      background-color: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-    
-    .btn.outline:hover {
-      background-color: var(--primary);
-      color: white;
-    }
-    
-    .skills ul {
-      list-style-type: none;
-    }
-    
-    .skills li {
-      margin-bottom: 0.75rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-    
-    .skills li::before {
-      content: '▹';
-      position: absolute;
+    /* Loading animation - FIXED */
+    #loader {
+      position: fixed;
+      top: 0;
       left: 0;
-      color: var(--primary);
+      width: 100%;
+      height: 100%;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
     
-    .site-footer {
-      background-color: rgba(15, 23, 42, 0.9);
-      padding: 2rem 0;
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loader-content {
       text-align: center;
-      margin-top: 4rem;
     }
     
-    .site-footer small {
-      color: var(--gray);
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(59, 130, 246, 0.3);
+      border-top: 4px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
     }
-    .modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(2,6,23,0.6);
-    z-index: 2000;
-    padding: 1.25rem;
-  }
-  .modal.open { display: flex; }
-  .modal-content {
-    width: 100%;
-    max-width: 980px;
-    height: 85vh;
-    background: #071026;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    position: relative;
-  }
-  .modal-content iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    color: var(--light);
-    border: 0;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 6px;
-  }
-
-  html.modal-open, body.modal-open { overflow: hidden; height: 100%; }
     
-    /* Responsive styles */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 3rem 0;
+      .hero h1 {
+        font-size: 2.5rem !important;
       }
       
-      .hero h1 {
+      .section-title {
         font-size: 2rem;
       }
-      
-      .nav {
-        display: none;
-      }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
     }
   </style>
+  
+  <!-- Configure Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3b82f6',
+            dark: '#0f172a',
+            light: '#f8fafc'
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'poppins': ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
 </head>
 <body>
-  <div class="content-wrapper">
-    <div id="site-loader" class="site-loader" aria-hidden="true">
-      <div class="spinner" role="status" aria-label="Loading"></div>
+  <!-- Loader - Will be hidden after page loads -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <h3 class="gradient-text fw-bold">Loading Portfolio</h3>
+      <p class="text-gray-400 mt-2">Emmanuel Nwosu - Full Stack Developer</p>
     </div>
-    
-    <header class="site-header">
-      <div class="container">
-        <a class="logo" href="#">Emmanuel Nwosu's Portfolio</a>
-        <nav class="nav">
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero container" id="home">
-        <div>
-          <h1>Hi, I'm Emmanuel — I build production‑ready web apps with React and Django.</h1>
-          <p>I design responsive frontends with React and JavaScript, and build robust APIs and services with Django & Django REST Framework. I deploy containerized apps with Docker and automate CI/CD pipelines for reliable releases.</p>
-          <p><a class="cta" href="#projects">See my work</a> <a class="cta" href="#contact" style="background:transparent;border:1px solid rgba(255,255,255,0.08);margin-left:8px;">Hire me</a></p>
-        </div>
-      </section>
-
-      <section id="projects" class="container projects">
-        <h2>Selected projects</h2>
-        <div class="grid">
-          <article class="card">
-            <img src="assets/project-taskflow.webp" alt="Taskflow app screenshot" loading="lazy">
-            <h3>Hospital Management System</h3>
-            <p>Comprehensive HMS with patient records, appointment scheduling, billing, and reporting. Built with React, Django REST Framework, and PostgreSQL.</p>
-            <p class="muted">React · Django · DRF · PostgreSQL · Jest</p>
-            <p><a href="#" class="btn">Live</a> <a href="#" class="btn outline">Source</a></p>
-          </article>
-
-          <article class="card">
-            <img src="assets/project-authapi.webp" alt="AuthAPI dashboard screenshot" loading="lazy">
-            <h3>API for billpro — Scalable Authentication Service</h3>
-            <p>Robust authentication API with JWT, OAuth2, password resets, and email verification. Built with Django REST Framework and PostgreSQL.</p>
-            <p class="muted">Django · DRF · PostgreSQL · Django Default Token · Pytest · Postman</p>
-            <p><a href="#" class="btn">Live</a> <a href="#" class="btn outline">Source</a></p>
-          </article>
-
-          <article class="card">
-            <img src="asserts/project-deploykit.webp" alt="CI/CD and infra diagram" loading="lazy">
-            <h3>DeployKit — CI/CD & Infrastructure Automation</h3>
-            <p>Reusable GitHub Actions workflows, Terraform for infra provisioning, and Dockerized services deployed to AWS ECS with automated canary releases.</p>
-            <p class="muted">Docker · Terraform · GitHub Actions · AWS </p>
-            <p><a href="#" class="btn">Case study</a></p>
-          </article>
-        </div>
-      </section>
-      
-      <section id="skills" class="container skills">
-        <h2>Skills</h2>
-        <ul>
-          <li><strong>Frontend:</strong> JavaScript, HTML5, CSS, React, Tailwind/CSS Modules, accessibility</li>
-          <li><strong>Backend:</strong> Django, Django REST Framework, Django Channels, Python</li>
-          <li><strong>Databases:</strong> PostgreSQL, Redis, Prisma / ORMs, migrations & indexing</li>
-          <li><strong>Testing & Quality:</strong> Jest, React Testing Library, Pytest, Playwright, linters</li>
-          <li><strong>DevOps:</strong> Docker, GitHub Actions, Terraform, AWS (ECS/ECR, RDS), container orchestration</li>
-          <li><strong>Other:</strong> REST & GraphQL, WebSockets, authentication & security, performance tuning</li>
-        </ul>
-      </section>
-      
-      <section id="about" class="container about">
-        <h2>About</h2>
-        <p>I build end‑to‑end web products: pixel‑accurate frontends, robust APIs, and scalable deployments. I enjoy collaborating with designers and cross‑functional teams, leading features from prototype to production, and improving developer experience through automation and tests.</p>
-        <p>Open to full‑time roles, freelance contracts, or technical architecture reviews.</p>
-      </section>
-
-      <section id="contact" class="container contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:nwosuemmanuel159@gmail.com">nwosuemmanuel159@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/nwoemma" target="_blank" rel="noopener">Github Account</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/emmanuel-nwosu-a6369332a" target="_blank" rel="noopener">Linkedin profile</a></p>
-        <p><a href="asserts/Emmanuel_Nwosu_Resume.pdf" class="btn">Download Resume</a></p>
-
-        <button id="open-cv" class="btn outline" type="button">Preview CV</button>
-      </section>
-
-      <div class="container">
-        <div class="grid">
-          <article class="card">
-            <h3>Project One</h3>
-            <p>A welding web application built with React as a frontend framework and Django REST Framework as a backend.</p>
-            <p><a href="https://welding-frontend.vercel.app" class="btn">Live</a></p>
-          </article>
-          <article class="card">
-            <img src="assets/project2.webp" alt="Project 2 screenshot" loading="lazy">
-            <h3>Project Two</h3>
-            <p>Short description of the project and tech used.</p>
-          </article>
-
-          <!-- Postman collection card -->
-          <article class="card">
-            <img src="assets/postman.webp" alt="Postman collection" loading="lazy">
-            <h3>API Collection — Postman</h3>
-            <p>Import this Postman collection to explore the API endpoints (auth, users, tasks) used in my projects.</p>
-            <p class="muted">Django REST Framework · JWT · Postman</p>
-            <p>
-              <a href="assets/postman_collection.json" class="btn" download>Download Collection</a>
-              <a href="https://www.postman.com/import" class="btn outline" target="_blank" rel="noopener">Import to Postman</a>
-            </p>
-          </article>
-        </div>
-      </div>
-    </main>
-    
-    <footer class="site-footer">
-      <div class="container">
-        <small>© Emmanuel Chizaram Nwosu — React & Django</small>
-      </div>
-    </footer>
   </div>
 
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3" style="background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="#">
+        <span class="gradient-text">EN</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a href="#contact" class="btn btn-primary-custom mt-2 mt-lg-0">Hire Me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="py-5 pt-lg-5 mt-5">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0 reveal">
+          <h6 class="text-primary mb-3"><i class="fas fa-code me-2"></i>FULL STACK DEVELOPER</h6>
+          <h1 class="display-4 fw-bold mb-4">Hi, I'm <span class="gradient-text">Emmanuel Nwosu</span></h1>
+          <p class="lead mb-4 text-gray-300">
+            I build production‑ready web applications with modern technologies. Specializing in <span class="text-primary fw-semibold">React</span> for responsive frontends and <span class="text-primary fw-semibold">Django</span> for robust backends.
+          </p>
+          <p class="mb-5 text-gray-400">
+            I design scalable architectures, implement CI/CD pipelines, and deploy containerized applications for reliable performance.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#projects" class="btn btn-primary-custom">
+              <i class="fas fa-eye me-2"></i>View Projects
+            </a>
+            <a href="#contact" class="btn btn-outline-custom">
+              <i class="fas fa-paper-plane me-2"></i>Contact Me
+            </a>
+            <a href="assets/Emmanuel_Nwosu_new.pdf" class="btn btn-outline-custom" download>
+              <i class="fas fa-download me-2"></i>Download CV
+            </a>
+          </div>
+          
+          <div class="mt-5 d-flex align-items-center">
+            <div class="d-flex">
+              <div class="me-4 text-center">
+                <h3 class="fw-bold gradient-text mb-0">15+</h3>
+                <p class="text-gray-400 mb-0">Projects</p>
+              </div>
+              <div class="me-4 text-center">
+                <h3 class="fw-bold gradient-text mb-0">3+</h3>
+                <p class="text-gray-400 mb-0">Years Experience</p>
+              </div>
+              <div class="text-center">
+                <h3 class="fw-bold gradient-text mb-0">100%</h3>
+                <p class="text-gray-400 mb-0">Client Satisfaction</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 reveal">
+          <div class="hero-image-container">
+            <div class="position-relative">
+              <!-- You can replace this with your actual image -->
+              <div class="bg-dark rounded-3 p-5 text-center" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                <div>
+                  <i class="fas fa-laptop-code display-1 text-primary mb-3"></i>
+                  <h4 class="text-white">Full Stack Developer</h4>
+                  <p class="text-gray-400">React • Django • DevOps</p>
+                </div>
+              </div>
+              <!-- Floating elements -->
+              <div class="position-absolute top-0 start-0 translate-middle bg-primary rounded-circle p-3" style="width: 60px; height: 60px;">
+                <i class="fas fa-react text-white fs-4"></i>
+              </div>
+              <div class="position-absolute top-0 end-0 translate-middle bg-secondary rounded-circle p-3" style="width: 60px; height: 60px;">
+                <i class="fab fa-python text-white fs-4"></i>
+              </div>
+              <div class="position-absolute bottom-0 start-50 translate-middle bg-success rounded-circle p-3" style="width: 60px; height: 60px;">
+                <i class="fas fa-database text-white fs-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-dark">
+    <div class="container py-5">
+      <h2 class="section-title text-white reveal">Featured Projects</h2>
+      
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card h-100 p-0 overflow-hidden">
+            <div class="position-relative overflow-hidden">
+              <div class="project-image bg-primary d-flex align-items-center justify-content-center">
+                <i class="fas fa-hospital-alt text-white display-3"></i>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-primary">React</span>
+                <span class="badge bg-secondary ms-1">Django</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="fw-bold text-white">Hospital Management System</h4>
+              <p class="text-gray-400 mb-3">Comprehensive HMS with patient records, appointment scheduling, billing, and reporting modules.</p>
+              <div class="mb-3">
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Django REST</span>
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">JWT Auth</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-primary-custom btn-sm flex-grow-1">
+                  <i class="fas fa-external-link-alt me-1"></i> Live Demo
+                </a>
+                <a href="#" class="btn btn-outline-custom btn-sm">
+                  <i class="fab fa-github me-1"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card h-100 p-0 overflow-hidden">
+            <div class="position-relative overflow-hidden">
+              <div class="project-image bg-secondary d-flex align-items-center justify-content-center">
+                <i class="fas fa-shield-alt text-white display-3"></i>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-primary">Django</span>
+                <span class="badge bg-success ms-1">PostgreSQL</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="fw-bold text-white">Scalable Authentication Service</h4>
+              <p class="text-gray-400 mb-3">Robust authentication API with JWT, OAuth2, password resets, and email verification.</p>
+              <div class="mb-3">
+                <span class="skill-badge">Django REST</span>
+                <span class="skill-badge">JWT</span>
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">Redis</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-primary-custom btn-sm flex-grow-1">
+                  <i class="fas fa-external-link-alt me-1"></i> API Docs
+                </a>
+                <a href="#" class="btn btn-outline-custom btn-sm">
+                  <i class="fab fa-github me-1"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="glass-card h-100 p-0 overflow-hidden">
+            <div class="position-relative overflow-hidden">
+              <div class="project-image bg-success d-flex align-items-center justify-content-center">
+                <i class="fas fa-server text-white display-3"></i>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-dark">Docker</span>
+                <span class="badge bg-warning ms-1 text-dark">AWS</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h4 class="fw-bold text-white">CI/CD & Infrastructure Automation</h4>
+              <p class="text-gray-400 mb-3">Reusable GitHub Actions workflows, Terraform for infra provisioning, and Dockerized services.</p>
+              <div class="mb-3">
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">Terraform</span>
+                <span class="skill-badge">GitHub Actions</span>
+                <span class="skill-badge">AWS ECS</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="#" class="btn btn-primary-custom btn-sm flex-grow-1">
+                  <i class="fas fa-book me-1"></i> Case Study
+                </a>
+                <a href="#" class="btn btn-outline-custom btn-sm">
+                  <i class="fab fa-github me-1"></i> Templates
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Additional Projects -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <h4 class="text-white mb-4 reveal">Other Projects</h4>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-3 reveal">
+              <div class="glass-card h-100 p-4 text-center">
+                <div class="contact-icon mx-auto mb-3">
+                  <i class="fas fa-wrench"></i>
+                </div>
+                <h5 class="text-white">Welding Web App</h5>
+                <p class="text-gray-400 small">React frontend with Django REST Framework backend</p>
+                <a href="https://welding-frontend.vercel.app" class="btn btn-outline-custom btn-sm mt-2">View Live</a>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 reveal">
+              <div class="glass-card h-100 p-4 text-center">
+                <div class="contact-icon mx-auto mb-3">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h5 class="text-white">E-Commerce Platform</h5>
+                <p class="text-gray-400 small">Full-featured online store with payment integration</p>
+                <a href="#" class="btn btn-outline-custom btn-sm mt-2">Coming Soon</a>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 reveal">
+              <div class="glass-card h-100 p-4 text-center">
+                <div class="contact-icon mx-auto mb-3">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h5 class="text-white">Analytics Dashboard</h5>
+                <p class="text-gray-400 small">Real-time data visualization with interactive charts</p>
+                <a href="#" class="btn btn-outline-custom btn-sm mt-2">View Demo</a>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 reveal">
+              <div class="glass-card h-100 p-4 text-center">
+                <div class="contact-icon mx-auto mb-3">
+                  <i class="fab fa-postman"></i>
+                </div>
+                <h5 class="text-white">API Collections</h5>
+                <p class="text-gray-400 small">Postman collections for all my API projects</p>
+                <a href="assets/postman_collection.json" class="btn btn-outline-custom btn-sm mt-2" download>Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-5">
+    <div class="container py-5">
+      <h2 class="section-title text-white reveal">Technical Skills</h2>
+      
+      <div class="row g-4">
+        <div class="col-lg-6 reveal">
+          <div class="glass-card p-4 h-100">
+            <h4 class="text-white mb-4">
+              <i class="fas fa-code text-primary me-2"></i>Frontend Development
+            </h4>
+            <div class="mb-4">
+              <h6 class="text-white mb-2">JavaScript / TypeScript</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h6 class="text-white mb-2">React & Ecosystem</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h6 class="text-white mb-2">HTML5 / CSS3</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
+              </div>
+            </div>
+            <div>
+              <h6 class="text-white mb-2">Tailwind / Bootstrap</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 92%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 reveal">
+          <div class="glass-card p-4 h-100">
+            <h4 class="text-white mb-4">
+              <i class="fas fa-server text-primary me-2"></i>Backend & DevOps
+            </h4>
+            <div class="mb-4">
+              <h6 class="text-white mb-2">Django & Django REST</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h6 class="text-white mb-2">PostgreSQL / MySQL</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h6 class="text-white mb-2">Docker & Containerization</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 75%"></div>
+              </div>
+            </div>
+            <div>
+              <h6 class="text-white mb-2">AWS / Cloud Services</h6>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-5">
+        <div class="col-12 reveal">
+          <div class="glass-card p-4">
+            <h4 class="text-white mb-4">All Skills & Technologies</h4>
+            <div class="d-flex flex-wrap">
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">TypeScript</span>
+              <span class="skill-badge">HTML5</span>
+              <span class="skill-badge">CSS3</span>
+              <span class="skill-badge">Tailwind CSS</span>
+              <span class="skill-badge">Bootstrap</span>
+              <span class="skill-badge">Django</span>
+              <span class="skill-badge">Django REST Framework</span>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">PostgreSQL</span>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">Redis</span>
+              <span class="skill-badge">Docker</span>
+              <span class="skill-badge">GitHub Actions</span>
+              <span class="skill-badge">AWS</span>
+              <span class="skill-badge">Terraform</span>
+              <span class="skill-badge">Jest</span>
+              <span class="skill-badge">Pytest</span>
+              <span class="skill-badge">Postman</span>
+              <span class="skill-badge">Git</span>
+              <span class="skill-badge">REST APIs</span>
+              <span class="skill-badge">GraphQL</span>
+              <span class="skill-badge">WebSockets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 bg-dark">
+    <div class="container py-5">
+      <h2 class="section-title text-white reveal">About Me</h2>
+      
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0 reveal">
+          <div class="glass-card p-5 h-100">
+            <h3 class="text-white mb-4">My Development Philosophy</h3>
+            <p class="text-gray-400 mb-4">
+              I build end‑to‑end web products: pixel‑accurate frontends, robust APIs, and scalable deployments. 
+              I enjoy collaborating with designers and cross‑functional teams, leading features from prototype 
+              to production, and improving developer experience through automation and testing.
+            </p>
+            <p class="text-gray-400 mb-4">
+              My approach combines clean code practices with modern development workflows to deliver 
+              maintainable and performant applications that provide real value to users.
+            </p>
+            
+            <div class="timeline mt-5">
+              <div class="timeline-item">
+                <h5 class="text-white">Full Stack Developer</h5>
+                <p class="text-primary mb-1">2022 - Present</p>
+                <p class="text-gray-400 small">Building web applications with React and Django, focusing on scalable architecture and user experience.</p>
+              </div>
+              
+              <div class="timeline-item">
+                <h5 class="text-white">Backend Specialist</h5>
+                <p class="text-primary mb-1">2021 - 2022</p>
+                <p class="text-gray-400 small">Developed RESTful APIs and microservices with Django REST Framework and PostgreSQL.</p>
+              </div>
+              
+              <div class="timeline-item">
+                <h5 class="text-white">Frontend Developer</h5>
+                <p class="text-primary mb-1">2020 - 2021</p>
+                <p class="text-gray-400 small">Created responsive user interfaces with React, implementing modern design systems and component libraries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 reveal">
+          <div class="glass-card p-5 h-100">
+            <h3 class="text-white mb-4">What I Offer</h3>
+            
+            <div class="d-flex align-items-start mb-4">
+              <div class="contact-icon me-3 flex-shrink-0">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <div>
+                <h5 class="text-white">Full Stack Development</h5>
+                <p class="text-gray-400 mb-0">End-to-end web application development from concept to deployment.</p>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-start mb-4">
+              <div class="contact-icon me-3 flex-shrink-0">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div>
+                <h5 class="text-white">Responsive Design</h5>
+                <p class="text-gray-400 mb-0">Creating applications that work seamlessly across all devices and screen sizes.</p>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-start mb-4">
+              <div class="contact-icon me-3 flex-shrink-0">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div>
+                <h5 class="text-white">Performance Optimization</h5>
+                <p class="text-gray-400 mb-0">Optimizing applications for speed, efficiency, and scalability.</p>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-start">
+              <div class="contact-icon me-3 flex-shrink-0">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div>
+                <h5 class="text-white">DevOps & Deployment</h5>
+                <p class="text-gray-400 mb-0">Setting up CI/CD pipelines and cloud infrastructure for reliable deployments.</p>
+              </div>
+            </div>
+            
+            <div class="mt-5 pt-4 border-top border-gray-700">
+              <h5 class="text-white mb-3">Currently Available For:</h5>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-primary p-2">Full‑Time Roles</span>
+                <span class="badge bg-secondary p-2">Freelance Contracts</span>
+                <span class="badge bg-success p-2">Project Collaboration</span>
+                <span class="badge bg-warning p-2 text-dark">Technical Consulting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container py-5">
+      <h2 class="section-title text-white reveal">Get In Touch</h2>
+      
+      <div class="row">
+        <div class="col-lg-8 mx-auto reveal">
+          <div class="glass-card p-5">
+            <div class="row text-center mb-5">
+              <div class="col-md-4 mb-4 mb-md-0">
+                <div class="contact-icon mx-auto">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <h5 class="text-white mt-3">Email</h5>
+                <a href="mailto:nwosuemmanuel159@gmail.com" class="text-gray-400">nwosuemmanuel159@gmail.com</a>
+              </div>
+              
+              <div class="col-md-4 mb-4 mb-md-0">
+                <div class="contact-icon mx-auto">
+                  <i class="fab fa-github"></i>
+                </div>
+                <h5 class="text-white mt-3">GitHub</h5>
+                <a href="https://github.com/nwoemma" target="_blank" class="text-gray-400">github.com/nwoemma</a>
+              </div>
+              
+              <div class="col-md-4">
+                <div class="contact-icon mx-auto">
+                  <i class="fab fa-linkedin"></i>
+                </div>
+                <h5 class="text-white mt-3">LinkedIn</h5>
+                <a href="https://www.linkedin.com/in/emmanuel-nwosu-a6369332a" target="_blank" class="text-gray-400">linkedin.com/in/emmanuel-nwosu</a>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <h4 class="text-white mb-4">Ready to Start a Project?</h4>
+              <p class="text-gray-400 mb-4">I'm currently available for freelance work and full-time positions. Let's discuss how we can work together!</p>
+              
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="mailto:nwosuemmanuel159@gmail.com" class="btn btn-primary-custom">
+                  <i class="fas fa-paper-plane me-2"></i> Send Email
+                </a>
+                <a href="https://wa.me/2348101234567" target="_blank" class="btn btn-outline-custom">
+                  <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                </a>
+                <a href="assets/Emmanuel_Nwosu_new.pdf" class="btn btn-outline-custom" download>
+                  <i class="fas fa-download me-2"></i> Download CV
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark border-top border-gray-800">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0 text-gray-400">© 2024 Emmanuel Chizaram Nwosu. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+          <div class="d-flex justify-content-center justify-content-md-end gap-3">
+            <a href="https://github.com/nwoemma" target="_blank" class="text-gray-400 hover:text-primary">
+              <i class="fab fa-github fs-5"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/emmanuel-nwosu-a6369332a" target="_blank" class="text-gray-400 hover:text-primary">
+              <i class="fab fa-linkedin fs-5"></i>
+            </a>
+            <a href="mailto:nwosuemmanuel159@gmail.com" class="text-gray-400 hover:text-primary">
+              <i class="fas fa-envelope fs-5"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-primary">
+              <i class="fab fa-twitter fs-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- JavaScript for loader and animations -->
   <script>
-    // Simple script to handle the site loader
+    // Hide loader when page is loaded
     window.addEventListener('load', function() {
-      const loader = document.getElementById('site-loader');
-      loader.style.display = 'none';
+      const loader = document.getElementById('loader');
+      // Add a small delay for better UX
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 500); // 0.5 second delay
+    });
+    
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const revealPoint = 150;
+      
+      revealElements.forEach(element => {
+        const revealTop = element.getBoundingClientRect().top;
+        
+        if (revealTop < windowHeight - revealPoint) {
+          element.classList.add('active');
+        }
+      });
+    };
+    
+    // Initial check
+    revealOnScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', revealOnScroll);
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+    
+    // Navbar background on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+        navbar.style.backdropFilter = 'blur(10px)';
+      } else {
+        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
+      }
     });
   </script>
 </body>
