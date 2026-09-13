@@ -13,6 +13,7 @@ import {
   UploadCloud,
   ExternalLink,
   Github,
+  Fingerprint
 } from "lucide-react";
 
 export const NAV_LINKS = [
@@ -66,18 +67,25 @@ export const FEATURED_PROJECTS = [
     primary: { label: "Case Study", href: "#", icon: Package, disabled: true },
     secondary: { label: "Templates", href: "#", icon: Github, disabled: true },
   },
+  {
+  icon: Fingerprint,
+  iconBg: "bg-indigo-600",
+  title: "KYC Machine Learning Services",
+  description:
+    "Developed a machine-learning-powered service for identity/document verification, facial matching, liveness detection, and customer risk assessment.",
+  tags: ["Machine Learning", "Facial Recognition", "Liveness Detection", "Risk Assessment"],
+  primary: {
+    label: "Live Demo",
+    href: "https://nwoemma-kyc-service.hf.space/",
+    icon: ExternalLink,
+    disabled: false,
+  },
+  secondary: { label: "Code", href: "#", icon: Github, disabled: true },
+},
 ];
 
 export const OTHER_PROJECTS = [
-  {
-    icon: Wrench,
-    title: "Billvenv App",
-    description:
-      "Worked with Ashpot building a comprehensive mobile app with Dart and Flutter, plus the backend.",
-    linkLabel: "View Live",
-    href: "https://drive.google.com/file/d/1PBh_D_vgNfsWt9U-LoHRKD5Fcnoep5wn/view?usp=sharing",
-    disabled: false,
-  },
+  
   {
     icon: CreditCard,
     // Title/description inferred from the URL — update with the real project name/summary.
@@ -126,6 +134,7 @@ export const BACKEND_SKILLS = [
   { name: "Django & Django REST", level: 97 },
   { name: "PostgreSQL / MySQL", level: 93 },
   { name: "Docker & Containerization", level: 90 },
+  { name: "Platform as a Service (PaaS)", level: 80 },
   { name: "AWS / Cloud Services", level: 88 },
 ];
 
