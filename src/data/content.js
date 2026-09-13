@@ -15,6 +15,7 @@ import {
   Github,
   Fingerprint
 } from "lucide-react";
+import cvFile from "../assets/Nwosu_Emmanuel_CV.pdf";
 
 export const NAV_LINKS = [
   { href: "#home", label: "Home" },
@@ -222,5 +223,5 @@ export const CONTACT = {
   linkedinLabel: "linkedin.com/in/emmanuel-nwosu",
   whatsapp: "https://wa.me/2347082107715",
   // Fixed typo from original source ("asserts" -> "assets"). Upload the actual PDF to public/assets/.
-  cv: "/assets/Emmanuel_Nwosu_new_CV.pdf",
+  cv: cvFile,
 };
